@@ -30,7 +30,7 @@ class CLI_Xf_Buildimport extends CLI
 			'url' => (string)$xml['url'],
 		);
 
-		$existingAddOn = $addonModel->verifyAddOnIsInstallable($addOnData, true);
+		$existingAddOn = $addonModel->verifyAddOnIsInstallable($addOnData, $addonModel->getAddonById($addonId) ? $addonId : false);
 
 		$db = XenForo_Application::getDb();
 		XenForo_Db::beginTransaction($db);
