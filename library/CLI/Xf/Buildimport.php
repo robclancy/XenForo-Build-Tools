@@ -30,7 +30,7 @@ class CLI_Xf_Buildimport extends CLI
 			'url' => (string)$xml['url'],
 		);
 
-		$version = file_get_contents($path . '/version.txt');
+		$version = (int) file_get_contents($path . '/version.txt');
 		if ($version)
 		{
 			foreach ($addOnData AS &$data)
