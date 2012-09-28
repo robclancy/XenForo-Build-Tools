@@ -30,6 +30,15 @@ class CLI_Xf_Buildimport extends CLI
 			'url' => (string)$xml['url'],
 		);
 
+		$version = file_get_contents($path . '/version.txt');
+		if ($version)
+		{
+			foreach ($addOnData AS &$data)
+			{
+				$data = str_replace('{@revision}', $version, $data);
+			}
+		}
+
 		$existingAddOn = $addonModel->verifyAddOnIsInstallable($addOnData, $addonModel->getAddonById($addonId) ? $addonId : false);
 
 		$db = XenForo_Application::getDb();
