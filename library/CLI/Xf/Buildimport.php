@@ -22,7 +22,7 @@ class CLI_Xf_Buildimport extends CLI
 			'addon_id' => (string)$xml['addon_id'],
 			'title' => (string)$xml['title'],
 			'version_string' => (string)$xml['version_string'],
-			'version_id' => (int)$xml['version_id'],
+			'version_id' => (string)$xml['version_id'],
 			'install_callback_class' => (string)$xml['install_callback_class'],
 			'install_callback_method' => (string)$xml['install_callback_method'],
 			'uninstall_callback_class' => (string)$xml['uninstall_callback_class'],
@@ -30,7 +30,7 @@ class CLI_Xf_Buildimport extends CLI
 			'url' => (string)$xml['url'],
 		);
 
-		$version = (int) file_get_contents($path . '/version.txt');
+		$version = file_get_contents($path . '/version.txt');
 		if ($version)
 		{
 			foreach ($addOnData AS &$data)
@@ -38,6 +38,8 @@ class CLI_Xf_Buildimport extends CLI
 				$data = str_replace('{@revision}', $version, $data);
 			}
 		}
+
+		$addOnData['version_id'] = (int) $addOnData['version_id'];
 
 		$existingAddOn = $addonModel->verifyAddOnIsInstallable($addOnData, $addonModel->getAddonById($addonId) ? $addonId : false);
 
