@@ -13,7 +13,7 @@ class CLI_Xf_Buildpackage extends CLI
 		$version = trim(file_get_contents($path . '/build-files/version.txt'));
 		shell_exec('mkdir temp;');
 		$addonFile = $this->_createAddonFile();
-		$addonFile = str_replace('{@revision}', $version, $addonFile);file_put_contents('test', $addonFile);
+		$addonFile = str_replace('{@revision}', $version, $addonFile);
 		$xml = new SimpleXMLElement($addonFile);
 		$packageName = str_replace(' ', '', $xml['title']) . '_Build-' . $version;
 		shell_exec('mkdir temp/' . $packageName);
