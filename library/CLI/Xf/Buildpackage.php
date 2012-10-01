@@ -33,7 +33,7 @@ class CLI_Xf_Buildpackage extends CLI
 		$dir = new DirectoryIterator($this->_path . '/build-files');
 		foreach ($dir AS $file)
 		{
-			if ($file->isDot() OR $file->isDir() OR $file->getExtension() != 'xml' OR $file->getFilename() == 'addon.xml')
+			if ($file->isDot() OR $file->isDir() OR XenForo_Helper_File::getFileExtension($file->getFilename()) != 'xml' OR $file->getFilename() == 'addon.xml')
 			{
 				continue;
 			}
