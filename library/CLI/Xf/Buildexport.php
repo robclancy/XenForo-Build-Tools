@@ -85,6 +85,22 @@ class CLI_Xf_Buildexport extends CLI
 			$model->appendStylePropertyXml($fileExport->getRootNode(), $styleId, $addonId);
 			$fileExport->save($path . '/' . $prefix . 'style_properties.xml');
 		}
+
+		// Hardcode for now
+		$file = $path . '../library/Merc/' . str_replace('merc', '', $addonId) . '/FileSums.php';
+		if (file_exists($file))
+		{
+			$hashes = XenForo_Helper_Hash::hashDirectory(realpath($path . '../'), array('.js', '.php'));
+
+			$remove = substr(realpath(dirname($file)), 0, strpos(realpath(dirname($file)), 'library'));
+			foreach ($hashes AS $k => $h)
+			{
+				unset($hashes[$k]);
+				$hashes[str_replace($remove, '', $k)] = $h;
+			}
+
+			file_put_contents($file, XenForo_Helper_Hash::getHashClassCode('Merc_' . str_replace('merc', '', $addonId) . '_FileSums', $hashes));
+		}
 	}
 }
 
