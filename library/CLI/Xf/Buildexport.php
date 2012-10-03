@@ -29,7 +29,7 @@ class CLI_Xf_Buildexport extends CLI
 			array('code_event_listeners', 'XenForo_Model_CodeEvent', 'appendEventListenersAddOnXml'),
 			array('cron', false, 'appendCronEntriesAddOnXml'),
 			'email_templates',
-			array('options', false, false, 'optionsgroup'),
+			array('options', false, false, 'optiongroups'),
 			'permissions',
 			'phrases',
 			array('route_prefixes', 'XenForo_Model_RoutePrefix', 'appendPrefixesAddOnXml'),
