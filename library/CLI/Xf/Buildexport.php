@@ -87,10 +87,10 @@ class CLI_Xf_Buildexport extends CLI
 		}
 
 		// Hardcode for now
-		$file = $path . '../library/Merc/' . str_replace('merc', '', $addonId) . '/FileSums.php';
+		$file = $path . '/../library/Merc/' . str_replace('merc', '', $addonId) . '/FileSums.php';
 		if (file_exists($file))
 		{
-			$hashes = XenForo_Helper_Hash::hashDirectory(realpath($path . '../'), array('.js', '.php'));
+			$hashes = XenForo_Helper_Hash::hashDirectory(realpath($path . '/../'), array('.js', '.php'));
 
 			$remove = substr(realpath(dirname($file)), 0, strpos(realpath(dirname($file)), 'library'));
 			foreach ($hashes AS $k => $h)

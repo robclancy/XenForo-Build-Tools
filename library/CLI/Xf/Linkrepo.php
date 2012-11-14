@@ -2,7 +2,7 @@
 
 class CLI_Xf_Linkrepo extends CLI
 {
-	protected $_helper = 'xf linkrepo source [destination]';
+	protected $_help = 'xf linkrepo source [destination]';
 
 	public function run($source)
 	{
